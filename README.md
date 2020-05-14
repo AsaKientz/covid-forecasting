@@ -21,7 +21,16 @@ The CDC defines low incidence as 10 or fewer new cases per 100,000 people over a
 
 ## Raw Data Description
 
-XXXX
+**Daily US State data file** - includes
+
+`State Name`
+`State Abbr`
+
+`Date`
+
+`Day of Year`
+
+``
 
 XXXX
 
