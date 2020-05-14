@@ -1,4 +1,7 @@
 # Safe to Reopen?  Evidence-based
+
+![alt text](/images/crowd.png) <!-- width="100%">
+
 Galvanize DSI Capstone around forecasting COVID-19 infection rates
 
 ---
@@ -18,8 +21,11 @@ The CDC defines low incidence as 10 or fewer new cases per 100,000 people over a
 
 ## Raw Data Description
 
+XXXX
 
-Additionally, population data by state (estimated for end of year 2019) was included from
+XXXX
+
+Additionally, population data by state (estimated for end of year 2019) was included from the [US Census](https://www2.census.gov/programs-surveys/popest/datasets/2010-2019/state/detail/SCPRC-EST2019-18+POP-RES.csv) website.
 
 ## EDA - Time Series Processing
 
