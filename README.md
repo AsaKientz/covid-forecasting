@@ -96,9 +96,11 @@ Additionally, the target line of "0.71 infections / 100,000 population / day" (=
 
  Generic SIR Model Flow:
 <div style="text-align:center"><img src="images/SIR_flow_diagram.png" /></div>
+<p align="center">
+  <img width="727" height="130" src="images/SIR_flow_diagram.png">
+</p>
 
 Where the state transitions are
-<div style="text-align:center"><img src="images/compartmental_state_change_key.png" /></div>
 <p align="center">
   <img width="530" height="88" src="images/compartmental_state_change_key.png">
 </p>
