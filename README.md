@@ -155,7 +155,7 @@ SEIR model - Infections and NY Infection data - "closest overlay; nonsense param
 This model doesn't give a good enough fit to the data to predict any usable date for answering the intial question.  The three rate parameters don't seem to have a region of space to fit the data well.
 
 ## Next Steps
-- The SEIR model used to try to fit the data was overly simplistic given the expected lack of full reporting of infected persons (low test prevalence).  Need to explore if additional complexity will address this issue.
+- The SEIR model used to try to fit the data was overly simplistic given the expected lack of full reporting of infected persons (low test prevalence).  Need to explore if additional complexity will address this issue (e.g., look at modeling β as a function of time).
 - The x-axis is in day of year to allow offsetting the onset of infection in a region more easily - this needs to be enabled.
 - The SEIR model also doesn't split out deaths from recovered - this would be useful to aiding in the next point.
 - It was recommended by a contact in the epidemiological world to instead model deaths, and to use a MLE fit on a Poisson distribution.  This will be attempted on Capstone III.
