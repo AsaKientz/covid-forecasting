@@ -152,7 +152,7 @@ SEIR model - Infections and NY Infection data - "literature parameters"
 SEIR model - Infections and NY Infection data - "closest overlay; nonsense parameters"
 <div style="text-align:center"><img src="images/seir_fit_to_NY_infections-01.png" /></div>
 
-There is no fitting function in the code to attempt to fit the model to the data. This model doesn't give a good enough fit to the data to predict any usable date for answering the intial question.  The the three rate parameters are adjusted.
+This model doesn't give a good enough fit to the data to predict any usable date for answering the intial question.  The three rate parameters don't seem to have a region of space to fit the data well.
 
 ## Next Steps
 - The SEIR model used to try to fit the data was overly simplistic given the expected lack of full reporting of infected persons (low test prevalence).
