@@ -72,12 +72,22 @@ A 7-day cyclic behavior can be seen in infection rates and deaths for most state
 
 It's unclear what drives this trend; i.e., if it's an artifact of patient's behavior with medical care, a lag in reporting data on certain days, etc.  
 
-This periodicity needs to be smoothed.
+This periodicity needs to be smoothed.  A 7-day rolling average was applied to the data for fitting with against models.
 
-A 7-day rolling average was applied to the data to smooth out peaks and troughs.
 
-## SIR Model Overview
- - A compartmental model used to model infectious diseases.
+![alt text](/images/infection_counts_by_doy_smoothed_thresh-NY.png)
+
+## Infectious Disease Model Overview
+ A compartmental model used to model infectious diseases; where every individual in a population is assigned to a compartment based on their condition.  The most basic of these models is an SIR model, where all indiviuals are in one of 3 states at any given time:
+ - **(S)** usceptible
+ - **(I)** nfected
+ - **(R)** ecovered
+
+ In an epidemic, initially the entire population (less some initial infected number, I<sub>0</sub>) is healthy and in the **S**useptble compartment.  Individuals can transition from **S**usceptble to **I**nfected at a rate proportional to 
+
+ - **β** - Average number of people an infected person infects each day 
+ - **γ** - the proportion of infected people recovering each day (1/γ = duration a person is infected)
+ - **R<sub>0</sub>** - Total number of people an infected person infects (R<sub>0</sub> = β / γ)
 
 ![alt text](/images/SIR_Flow_Diagram.png "SIR Model Flow")
 
