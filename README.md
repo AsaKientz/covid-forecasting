@@ -144,12 +144,12 @@ The SEIR base model with population N=1000.
 
 <div style="text-align:center"><img src="images/generic_seir_trends.png" /></div>
 
-SEIR model - Infections and NY Infection data - "literature parameters"
 
+SEIR model - Infections and NY Infection data - "literature parameters"
 <div style="text-align:center"><img src="images/seir_fit_to_NY_infections-02.png" /></div>
 
-SEIR model - Infections and NY Infection data - "closest overlay; nonsense parameters"
 
+SEIR model - Infections and NY Infection data - "closest overlay; nonsense parameters"
 <div style="text-align:center"><img src="images/seir_fit_to_NY_infections-01.png" /></div>
 
 There is no fitting function in the code to attempt to fit the model to the data. This model doesn't give a good enough fit to the data to predict any usable date for answering the intial question.  The the three rate parameters are adjusted.
