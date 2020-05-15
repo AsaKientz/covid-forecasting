@@ -22,8 +22,6 @@ class StateInfections():
     def __init__(self):
         pass
 
-    def sigmoid_fit(self):
-        pass
 
     
 
@@ -119,5 +117,4 @@ if __name__ == "__main__":
     df_usa_pop = pd.read_csv('../data/us_state_population_2019.csv')
     df_usa = open_merge_files('../data/us_states_covid19_daily.csv', df_usa_pop)
     
-    plot_infection_trends(['NY', 'NJ'], metric = 'infection')
-    
+    plot_infection_trends(['NY'], metric = 'infection')

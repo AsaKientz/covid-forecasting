@@ -24,8 +24,8 @@ def plot_state_daily_data(state_list, metric = 'infection'):
         plt_cl = 2
     else:
         plt_cl = 1
-    fig_sz_rw = 2 + 3 * plt_rw
-    fig, axes = plt.subplots(plt_rw,plt_cl,figsize = (15,fig_sz_rw), sharex=True, sharey=True)
+    fig_sz_rw = 2 + 3 * plt_row
+    fig, axes = plt.subplots(plt_row,plt_cl,figsize = (15,fig_sz_rw), sharex=True, sharey=True)
     for ax, state in zip(axes.flat, state_list):
         df2 = df_usa[df_usa['state_id']==state]
         ax.bar(df2.d_o_y, df2[metric_dict[metric][0]], label = f"{state}")
