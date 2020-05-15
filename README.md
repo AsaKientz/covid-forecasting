@@ -1,6 +1,6 @@
 # Safe to Reopen?  Evidence-based
 
-![alt text](/images/crowd.png) <!-- width="100%">
+![alt text](/images/crowd.png)
 
 Galvanize DSI Capstone around forecasting COVID-19 infection rates
 
@@ -15,28 +15,56 @@ A
 
 
 ### Incidence Threshold
-The CDC defines low incidence as 10 or fewer new cases per 100,000 people over a period of 14 days. This rate is equivalent to 0.71 new cases per 100,000 people per day, or about 2,300 new cases per day in the United States.
+The CDC defines low incidence as 10 or fewer new cases per 100,000 people over a period of 14 days. This rate is equivalent to **0.71 new cases per 100,000 people per day**, or about 2,300 new cases per day in the United States.
 
 ---
 
 ## Raw Data Description
 
-**Daily US State data file** - includes
+**Daily US State data file** - File is updated daily and includes:
 
-`State Name`
-`State Abbr`
+| Field Name                    | Description                       |
+|-------------------------------|-----------------------------------|
+|`datetime`                     | Date                              |
+|`d_o_y`                        | Day of year (Jan 1st, 2020 = 1)   |
+|`state_name`                   | State Name                        |
+|`state_id`                     | State 2-character Postal Code     |
+|`state_pop_2019`               | State Population (2019)*          |
+|`positive_daily_incr`          | Positive Test Results, New        |
+|`positive_cum`                 | Positive Test Results, Cumulative |
+|`negative_daily_incr`          | Negative Test Results, New        |
+|`negative_cum`                 | Negative Test Results, Cumulative |
+|`pending_daily`                | Pending Test Results, New         |
+|`death_daily_incr`             | Deaths, New                       |
+|`death_cum`                    | Deaths, Cumulative                |
+|`recovered_cum`                | Recovered Patients, Cumulative    |
+|`hospitalized_daily_incr`      | Hospitalized Patients, New        |
+|`hospitalized_cum`             | Hospitalized Patients, Cumulative |
+|`total_test_results_daily_incr`| Total Test Results, New           |
+|`total_test_results_cum`       | Total Test Results, Cumulative    |
+|`total_tests_cum`              | Total Tests, Cumulative (incl 'Pending')  |
 
-`Date`
 
-`Day of Year`
 
-``
+\* Population data by state (estimated for end of year 2019) was included from the [US Census](https://www2.census.gov/programs-surveys/popest/datasets/2010-2019/state/detail/SCPRC-EST2019-18+POP-RES.csv) website.
 
-XXXX
-
-Additionally, population data by state (estimated for end of year 2019) was included from the [US Census](https://www2.census.gov/programs-surveys/popest/datasets/2010-2019/state/detail/SCPRC-EST2019-18+POP-RES.csv) website.
+---
 
 ## EDA - Time Series Processing
+
+The data is simply daily and cumulative counts - bar charts are most appropriate to explore this.
+
+### Infections
+
+![alt text](/images/infection_counts_by_doy-NY-NJ.png)
+
+Hard to see all states on one y-axis, and a log scale loses some vertical perspective.
+
+![alt text](/images/infection_counts_by_doy-CO-FL-CA-MO.png)
+
+### Deaths
+
+![alt text](/images/deaths_by_doy-NY-NJ.png)
 
 ### Weekly <|trend|>
 
