@@ -7,7 +7,7 @@
 
 As of mid-May 2020, various policies have been adopted in the US for roughly 2 months to reduce infection rates of COVID-19.  These policies vary widely from state to state, as well as city to city, and have become sources of social tension and political debate.
 
-An evidence-based approach needs to be a leading part of the conversation to shape policy.
+An evidence-based approach needs to be a leading part of the conversation to shape policy.  Specifically, based on the infection data, **when will a region's infection rate be low enough to justify relaxing policies and measures around lockdowns / stay-at-home and even social distancing?**
 
 ---
 ## Background
@@ -72,7 +72,7 @@ Hard to see all states on one y-axis, and a log scale loses some vertical perspe
 
 ![alt text](/images/deaths_by_doy-NY-NJ.png)
 
-### Weekly <|trend|>
+### Weekly Trends
 
 A 7-day cyclic behavior can be seen in infection rates and deaths for most states (as well as world countries).  Infections and Deaths are lowest on Mondays and Tuesdays; highest on Thursdays and Friday.
 
@@ -99,6 +99,9 @@ Additionally, the target line of "0.71 infections / 100,000 population / day" (=
 
 Where the state transitions are
 <div style="text-align:center"><img src="images/compartmental_state_change_key.png" /></div>
+<p align="center">
+  <img width="530" height="88" src="images/compartmental_state_change_key.png">
+</p>
 
 The sum of the 3 compartments is a constant (the population, N), and the sum of the derivatives of all compartments must be 0.
 
@@ -114,14 +117,14 @@ Equations for an SIR Model:
 <div style="text-align:center"><img src="images/SIR_equations.png" /></div>
 
 ### SEIR Model
-Generic SER Model Flow:
+Generic SEIR Model Flow:
 <div style="text-align:center"><img src="images/SEIR_flow_diagram.png" /></div>
 
-This adds in an **(E)**xposed compartment, where an individual has contracted the virus but can't yet infect others (incubation period).  This brings a new rate variable, δ.
+This adds in an **(E)** xposed compartment, where an individual has contracted the virus but can't yet infect others (incubation period).  This brings a new rate variable, δ.
 
 - **δ** - the rate at which exposed people become infected/infectious (1/δ = incubation period)
 
-Equations for Modeling:
+Equations for an SEIR Model:
 
 <p align="center">
   <img width="237" height="250" src="images/SEIR_equations.png">
