@@ -140,7 +140,7 @@ Equations for an SEIR Model:
 
 ## Models and Fits
 
-The SEIR base model with population N=1000.
+The SEIR base model with population N=1000.  The SciPy `odeint` function is used to integrate the differnetial equations into time series.
 
 <div style="text-align:center"><img src="images/generic_seir_trends.png" /></div>
 
