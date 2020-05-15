@@ -94,13 +94,12 @@ Additionally, the target line of "0.71 infections / 100,000 population / day" (=
  
  and individuals transition from one state to another following a system of differential equations.
 
- Generic SIR Model Flow:
-<div style="text-align:center"><img src="images/SIR_flow_diagram.png" /></div>
+ **Generic SIR Model Flow:**
 <p align="center">
   <img width="727" height="130" src="images/SIR_flow_diagram.png">
 </p>
 
-Where the state transitions are
+Where the state transitions are given by:
 <p align="center">
   <img width="530" height="88" src="images/compartmental_state_change_key.png">
 </p>
@@ -139,17 +138,26 @@ Equations for an SEIR Model:
 - This SIR/SEIR model assumes immunity upon recovery - this may be true with COVID-19, or true for a short time period, but has yet to be confirmed.  An SEIDS (or SEIRD, SEICDS, SEIRCDS, etc.!) may ultimately be a better approximation of the underlying situation.
 - ...there are likely many others
 
-## Sample fits
+## Models and Fits
+
+The SEIR base model with population N=1000.
 
 <div style="text-align:center"><img src="images/generic_seir_trends.png" /></div>
 
+SEIR model - Infections and NY Infection data - "literature parameters"
+
+<div style="text-align:center"><img src="images/seir_fit_to_NY_infections-02.png" /></div>
+
+SEIR model - Infections and NY Infection data - "closest overlay; nonsense parameters"
 
 <div style="text-align:center"><img src="images/seir_fit_to_NY_infections-01.png" /></div>
 
+There is no fitting function in the code to attempt to fit the model to the data. This model doesn't give a good enough fit to the data to predict any usable date for answering the intial question.  The the three rate parameters are adjusted.
 
 ## Next Steps
 - The SEIR model used to try to fit the data was overly simplistic given the expected lack of full reporting of infected persons (low test prevalence).
-- The model also didn't break out deaths from recovered.
+- The x-axis is in day of year to allow offsetting the onset of infection in a region more easily - this needs to be enabled.
+- The SEIR model also doesn't split out deaths from recovered - this would be useful to aiding in the next point.
 - It was recommended by a contact in the epidemiological world to instead model deaths, and to use a MLE fit on a Poisson distribution.
 
 

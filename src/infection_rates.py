@@ -17,16 +17,66 @@ plt.rcParams.update({'font.size': font_size})
 # CDC guideline threshold of 10 reported infections per 100k pop every 14 days
 reopen_thresh = 10./100000/14
 
-class StateInfections():
-    
-    def __init__(self):
-        pass
+num_days_smooth = 7
 
+states = ['NY', 'FL', 'CA']
+# states = ['NY']
+states_pop = [df_usa_pop.loc[df_usa_pop['ABBR'] == states[i],['POPEST18PLUS2019']].iloc[0,0] for i in range(len(states))]
+state_reopen_thresh = [math.ceil(x * reopen_thresh) for x in states_pop]
+state_reopen_thresh
 
-    
+N = states_pop[0]
+# infected person infects 1 other person per day
+beta = 0.999 
+# infections last D days
+D = 1.18 
+gamma = 1.0 / D
+# incubation period of 1/delta days
+delta = 1.0 / 0.5 
+
+E0 = 100
+S0, I0, R0 = N-E0, 0, 0
+
+t = np.linspace(50,150,100)
+# Initial conditions vector
+y0 = S0, E0, I0, R0
+# Integrate the SIR equations over the time grid, t.
+ret = odeint(deriv_seir, y0, t, args=(N, beta, gamma, delta))
+S, E, I, R = ret.T
+
+def deriv_seir(y, t, N, beta, gamma, delta):
+    S, E, I, R = y
+    dSdt = -beta * S * I / N
+    dEdt = beta * S * I / N - delta * E
+    dIdt = delta * E - gamma * I
+    dRdt = gamma * I
+    return dSdt, dEdt, dIdt, dRdt
+
+fig, ax = plt.subplots(figsize = (12,6))
+for state in states:
+    plt.bar(df2.d_o_y, df2['positive_daily_incr'], label = f"{state}: Daily Infections")
+    plt.plot(df2.d_o_y, df2['Rolling-{num_days_smooth}mean'], label = f"{state}: {num_days_smooth}-Day Smooth", color='blue')
+    plt.plot(t, I, label = f'Predicted Infections - SEIR, β={beta:.2f}, γ={gamma:.2f}, δ={delta:.2f}', color = 'green')
+    ax.axhline(state_reopen_thresh[0], color = 'black', ls="--", label = f"Reopen Threshold = {state_reopen_thresh[0]}")
+# ax.set_yscale('log')
+ax.xaxis.set_major_locator(MultipleLocator(5))
+ax.xaxis.set_major_formatter(FormatStrFormatter('%d'))
+# For the minor ticks, use no labels; default NullFormatter.
+ax.xaxis.set_minor_locator(MultipleLocator(1))
+ax.tick_params(direction='out', length=10)
+ax.set_xlabel('Day of Year (2020)')
+ax.set_ylabel('Infection Count')
+# ax.set_yscale('log')
+plt.title(f'Daily COVID-19 Infections in {state} (2020)')
+handles, labels = plt.gca().get_legend_handles_labels()
+order = [3,0,2,1]
+plt.legend([handles[idx] for idx in order],[labels[idx] for idx in order], fontsize=12,loc='upper left')
+plt.show();
+fig.savefig('../images/seir_fit_to_NY_infections-01.png', dpi=250)
+
 
 def plot_infection_trends(state_list, metric = 'infection'):
-    num_days_smooth = 7
+    
     metric_dict = {'infection' : ['positive_daily_incr', 'Infections', 'Infection Counts', 'infection_counts'],
                    'hospitalized' : ['hospitalized_daily_incr', 'Hospitializations', 'Hospitializations', 'hospitializations'],
                    'death' : ['death_daily_incr', 'Deaths', 'Deaths', 'deaths']}
@@ -69,30 +119,6 @@ def plot_infection_trends(state_list, metric = 'infection'):
     states_str = "-".join(state_list)
     fig.savefig(f"../images/{metric_dict[metric][3]}_by_doy_smoothed_thresh-{states_str}.png", dpi=250)
 
-def dummy_def():
-    states = ['NY']
-    num_days = 7
-    df2 = df_usa[df_usa['state_id'].isin(states)]
-    df2['Rolling-{num_days}mean'] = df2['positive_daily_incr'].rolling(window=num_days, center = True).mean()
-    fig, ax = plt.subplots(figsize = (12,6))
-    for state in states:
-        plt.bar(df2.d_o_y, df2['positive_daily_incr'], label = f"{state}: Daily Infections")
-        plt.plot(df2.d_o_y, df2['Rolling-{num_days}mean'], label = f"{state}: {num_days}-Day Smooth", color='blue')
-        
-        ax.axhline(state_reopen_thresh[0], color = 'black', ls="--", label = f"Reopen Threshold = {state_reopen_thresh[0]}")
-    
-    ax.xaxis.set_major_locator(MultipleLocator(5))
-    ax.xaxis.set_major_formatter(FormatStrFormatter('%d'))
-    # For the minor ticks, use no labels; default NullFormatter.
-    ax.xaxis.set_minor_locator(MultipleLocator(1))
-    ax.tick_params(direction='out', length=10)
-    ax.set_xlabel('Day of Year (2020)')
-    ax.set_ylabel('Infection Count')
-    plt.title(f'Daily COVID-19 Infections in {state} (2020)')
-    handles, labels = plt.gca().get_legend_handles_labels()
-    order = [2,0,1]
-    plt.legend([handles[idx] for idx in order],[labels[idx] for idx in order], fontsize=12,loc='upper left')
-    plt.show();
 
 def open_merge_files(infection_file_path, df_population):
     df_usa_rates = pd.read_csv(infection_file_path)
