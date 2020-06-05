@@ -14,7 +14,7 @@ An evidence-based approach needs to be a leading part of the conversation to sha
 
 The CDC has defined 3 metrics around relaxing shelter-at-home / social distancing policies:
 1. **Infection Rates** dropping below a threshold (see below)
-2. **Increased testing** on the general population (positive tests shouls be on the order of 2% - currently in the 15%-20% range)
+2. **Increased testing** on the general population (positive tests should be on the order of 2% - currently in the 15%-20% range)
 3. A **contact tracing** system in place to throughly isolate all parties related to each now reported infection.
 
 Infection rate data is widely available and updated daily, so provides a good opportunity to understand how regions may / may not be approaching the first metric. 
