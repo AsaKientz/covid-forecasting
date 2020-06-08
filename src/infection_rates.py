@@ -45,7 +45,7 @@ ret = odeint(deriv_seir, y0, t, args=(N, beta, gamma, delta))
 S, E, I, R = ret.T
 
 def deriv_seir(y, t, N, beta, gamma, delta):
-    S, E, I, R = y
+    S, E, I, _ = y
     dSdt = -beta * S * I / N
     dEdt = beta * S * I / N - delta * E
     dIdt = delta * E - gamma * I
