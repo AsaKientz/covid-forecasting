@@ -34,7 +34,7 @@ def plot_state_daily_data(state_list, metric = 'infection'):
         ax.set_ylabel(f'Reported {metric_dict[metric][1]}') 
         ax.label_outer()
     plt.suptitle(f'{metric_dict[metric][2]} By Day of Year, By State', fontsize=16, y = 0.95)
-    plt.show();
+    plt.show()
     states_str = "-".join(state_list)
     fig.savefig(f"../images/{metric_dict[metric][3]}_by_doy-{states_str}.png", dpi=250)
 
